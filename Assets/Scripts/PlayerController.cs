@@ -6,34 +6,35 @@ public class PlayerController : MonoBehaviour
 {
     public float xSpeed;
     public float limitx;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        SwipeCheck();
+        
+            SwipeCheck();      
+        
 
     }
     void SwipeCheck()
     {
-        float newX = 0;
-        float touchXDelta = 0;
-        if (Input.touchCount>0 && Input.GetTouch(0).phase==TouchPhase.Moved)
+        if (GameManager.gameOver == false && GameManager.gameStarted==true)
         {
-            touchXDelta = Input.GetTouch(0).deltaPosition.x / Screen.width;
-        }
-        if (Input.GetMouseButton(0))
-        {
-            touchXDelta = Input.GetAxis("Mouse X");
-        }
-        newX = transform.position.x + xSpeed * touchXDelta * Time.deltaTime;
-        newX = Mathf.Clamp(newX, -limitx, limitx);
+            float newX = 0;
+            float touchXDelta = 0;
+            //if (Input.touchCount > 0 && Inut.GetTouch(0).phase == TouchPhase.Moved)
+            //{
+            //    touchXDelta = Input.GetTouch(0).deltaPosition.x / Screen.width;
+            //}
+            if (Input.GetMouseButton(0))
+            {
+                touchXDelta = Input.GetAxis("Mouse X");
+                //touchXDelta = Input.GetTouch(0).deltaPosition.x / Screen.width;
+            }
+            newX = transform.position.x + xSpeed * touchXDelta * Time.deltaTime;
+            newX = Mathf.Clamp(newX, -limitx, limitx);
 
 
-        Vector3 newPosition = new Vector3(newX, transform.position.y, transform.position.z);
-        transform.position = newPosition;
+            Vector3 newPosition = new Vector3(newX, transform.position.y, transform.position.z);
+            transform.position = newPosition;
+        }
+        
     }
 }

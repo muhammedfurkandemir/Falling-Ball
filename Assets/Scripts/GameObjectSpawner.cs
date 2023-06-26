@@ -57,12 +57,16 @@ public class GameObjectSpawner : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer>=maxTime)
+        if (GameManager.gameStarted==true&&GameManager.gameOver==false)
         {
-            InstantiateGameObject(grounds);
-            InstantiateObtacle(obstacles);
-            timer = 0;
+            timer += Time.deltaTime;
+            if (timer >= maxTime)
+            {
+                InstantiateGameObject(grounds);
+                InstantiateObtacle(obstacles);
+                timer = 0;
+            }
         }
+        
     }
 }

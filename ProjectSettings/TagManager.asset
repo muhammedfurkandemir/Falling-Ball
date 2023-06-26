@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Limit
   - Ground
+  - Obstacle
+  - Exit
   layers:
   - Default
   - TransparentFX

@@ -5,20 +5,39 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    private Text scoreText;
+    int score;
+    int highScore;
+    Text scoreText;
+    public Text panelScoreText;
+    public Text panelHighScoreText;
+    public GameObject New;
     void Start()
     {
+        score = 0;
         scoreText = GetComponent<Text>();
+        scoreText.text = score.ToString();
+        highScore = PlayerPrefs.GetInt("highScore");
+        panelScoreText.text = "Score : " + score.ToString();
+        panelHighScoreText.text = "Best   : " + highScore.ToString();
     }
 
     
     void Update()
     {
-        IncrementScore();
+        
     }
 
-    void IncrementScore()
+    public void Scored()
     {
-        scoreText.text = GameManager.score.ToString();
+        score++;
+        scoreText.text = score.ToString();
+        panelScoreText.text = "Score : " + score.ToString();
+        if (score>highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("highScore", highScore);
+            panelHighScoreText.text = "Best   : " + highScore.ToString();
+            New.SetActive(true);
+        }
     }
 }

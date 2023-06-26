@@ -96,11 +96,11 @@ GameObject:
   - component: {fileID: 3843346647236416588}
   m_Layer: 0
   m_Name: Obstacle
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5010423344601065821
 Transform:
   m_ObjectHideFlags: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81084a5a90ab23a4d901fed81838677b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 5
 --- !u!65 &3843346647236416588
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -142,8 +142,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0994841, y: 1.156599, z: 1}
-  m_Center: {x: 0.009002507, y: 0.005358696, z: 0}
+  m_Size: {x: 1.2230709, y: 1.3572273, z: 0.35941768}
+  m_Center: {x: 0.018997818, y: 0.0008831024, z: 0.005055219}
 --- !u!1 &5010423345165302929
 GameObject:
   m_ObjectHideFlags: 0
