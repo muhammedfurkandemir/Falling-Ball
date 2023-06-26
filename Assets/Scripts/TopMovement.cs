@@ -6,15 +6,23 @@ public class TopMovement : MonoBehaviour
 {
     public float moveSpeed;
 
-    void Start()
+
+    private void OnEnable()
     {
-        Destroy(gameObject,10f);
+        StartCoroutine(GameObjectDeactive());
     }
+
 
     // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector3.up * Time.deltaTime * moveSpeed); 
     }
-    
+    IEnumerator GameObjectDeactive()
+    {
+        yield return new WaitForSeconds(25f);
+        gameObject.SetActive(false);
+    }
+  
+
 }
