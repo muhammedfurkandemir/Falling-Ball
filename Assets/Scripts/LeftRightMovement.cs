@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingGameObject : MonoBehaviour
+public class LeftRightMovement : MonoBehaviour
 {
-    public float borderX;
+    public float borderX=9;
     public float movingSpeedX;
 
     private bool isArrivedRightBorder=false;
@@ -17,25 +17,30 @@ public class MovingGameObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isArrivedRightBorder && isArrivedLeftBorder)
+        if (GameManager.gameStarted == true && GameManager.gameOver == false)
         {
-            transform.Translate(Vector3.right * Time.deltaTime);
+            LeftOrRightMovement();
         }
-        
+
+    }
+    void LeftOrRightMovement()
+    {
+        if (!isArrivedRightBorder && isArrivedLeftBorder)
+            transform.Translate(Vector3.right * Time.deltaTime);
+
         if (transform.position.x >= borderX)
         {
             isArrivedRightBorder = true;
             isArrivedLeftBorder = false;
         }
+
         if (!isArrivedLeftBorder && isArrivedRightBorder)
-        {
             transform.Translate(Vector3.left * Time.deltaTime);
-        }
+
         if (transform.position.x <= -borderX)
         {
             isArrivedLeftBorder = true;
             isArrivedRightBorder = false;
         }
-
     }
 }

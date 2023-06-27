@@ -9,7 +9,7 @@ public class CheckCollisions : MonoBehaviour
     private Rigidbody _rigidbody;
     public Score score;
     public AudioSource bounceSound;
-    public AudioSource obstacleSound;
+    public AudioSource gameOverSound;
     private int bounceCount;
 
     public GameManager _GameManager;
@@ -41,7 +41,7 @@ public class CheckCollisions : MonoBehaviour
         else if (collision.gameObject.CompareTag("Obstacle"))
         {
             Debug.Log("game over...!");
-            obstacleSound.Play();
+            gameOverSound.Play();
             _GameManager.GameOver();
             
 
@@ -56,6 +56,7 @@ public class CheckCollisions : MonoBehaviour
         if (other.CompareTag("Limit"))
         {
             Debug.Log("game over...!");
+            gameOverSound.Play();
             _GameManager.GameOver();
         }
         else if (other.CompareTag("Exit"))

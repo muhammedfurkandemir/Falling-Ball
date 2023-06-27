@@ -6,12 +6,12 @@ public class PlayerController : MonoBehaviour
 {
     public float xSpeed;
     public float limitx;
+    public Vector3 startPosition;
+    private bool setStarted=false;
     void Update()
     {
-        
-            SwipeCheck();      
-        
-
+        setStartPosition();
+        SwipeCheck();
     }
     void SwipeCheck()
     {
@@ -19,15 +19,15 @@ public class PlayerController : MonoBehaviour
         {
             float newX = 0;
             float touchXDelta = 0;
-            //if (Input.touchCount > 0 && Inut.GetTouch(0).phase == TouchPhase.Moved)
-            //{
-            //    touchXDelta = Input.GetTouch(0).deltaPosition.x / Screen.width;
-            //}
-            if (Input.GetMouseButton(0))
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
             {
-                touchXDelta = Input.GetAxis("Mouse X");
-                //touchXDelta = Input.GetTouch(0).deltaPosition.x / Screen.width;
+                touchXDelta = Input.GetTouch(0).deltaPosition.x ;
             }
+            //if (Input.GetMouseButton(0))
+            //{
+            //    touchXDelta = Input.GetAxis("Mouse X");
+            //    //touchXDelta = Input.GetTouch(0).deltaPosition.x / Screen.width;
+            //}
             newX = transform.position.x + xSpeed * touchXDelta * Time.deltaTime;
             newX = Mathf.Clamp(newX, -limitx, limitx);
 
@@ -36,5 +36,14 @@ public class PlayerController : MonoBehaviour
             transform.position = newPosition;
         }
         
+    }
+    void setStartPosition()
+    {
+        if (Input.GetMouseButtonDown(0) && !setStarted)
+        {
+            Debug.Log("Butona Basıldı!");
+            this.transform.position = startPosition;
+            setStarted = true;
+        }        
     }
 }
