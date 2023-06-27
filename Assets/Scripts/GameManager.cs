@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameStartImage;
     public GameObject gameOverPanel;
     public GameObject score;
+    public GameObject startGround;
   
 
     public Rigidbody _rigidbody;
@@ -46,7 +47,9 @@ public class GameManager : MonoBehaviour
         gameStarted = true;
         _rigidbody.useGravity = true;
         gameStartImage.SetActive(false);
+        startGround.SetActive(true);
     }
+    
     public void RestartBtn()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

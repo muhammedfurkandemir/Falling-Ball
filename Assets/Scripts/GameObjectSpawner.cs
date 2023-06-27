@@ -17,7 +17,7 @@ public class GameObjectSpawner : MonoBehaviour
     float randomY;
     float randomScaleX;
 
-    public void InstantiateGameObject(GameObject[] gameObjects)
+    public void InstantiateGround(GameObject[] gameObjects)
     {
         randomX = Random.Range(minX, maxX);
         randomScaleX = Random.Range(minScaleX, 2 * minScaleX);        
@@ -62,7 +62,7 @@ public class GameObjectSpawner : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= maxTime)
             {
-                InstantiateGameObject(grounds);
+                InstantiateGround(grounds);
                 InstantiateObtacle(obstacles);
                 timer = 0;
             }
