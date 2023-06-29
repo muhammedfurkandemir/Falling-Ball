@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
             float touchXDelta = 0;
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
             {
-                touchXDelta = Input.GetTouch(0).deltaPosition.x ;
+                touchXDelta = Input.GetTouch(0).deltaPosition.x;
             }
             //if (Input.GetMouseButton(0))
             //{

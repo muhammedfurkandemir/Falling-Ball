@@ -17,8 +17,8 @@ public class Score : MonoBehaviour
         scoreText = GetComponent<Text>();
         scoreText.text = score.ToString();
         highScore = PlayerPrefs.GetInt("highScore");
-        panelScoreText.text = "Score : " + score.ToString();
-        panelHighScoreText.text = "Best   : " + highScore.ToString();
+        panelScoreText.text = "Score: " + score.ToString();
+        panelHighScoreText.text = "Best: " + highScore.ToString();
     }
 
     
@@ -31,12 +31,12 @@ public class Score : MonoBehaviour
     {
         score++;
         scoreText.text = score.ToString();
-        panelScoreText.text = "Score : " + score.ToString();
+        panelScoreText.text = "Score: " + score.ToString();
         if (score>highScore)
         {
             highScore = score;
             PlayerPrefs.SetInt("highScore", highScore);
-            panelHighScoreText.text = "Best   : " + highScore.ToString();
+            panelHighScoreText.text = "Best: " + highScore.ToString();
             New.SetActive(true);
         }
     }

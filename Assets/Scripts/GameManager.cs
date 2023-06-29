@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverPanel;
     public GameObject score;
     public GameObject startGround;
+    public GameObject pausePanel;
   
 
     public Rigidbody _rigidbody;
@@ -53,6 +54,16 @@ public class GameManager : MonoBehaviour
     public void RestartBtn()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void PauseBtn()
+    {
+        Time.timeScale = 0;
+        pausePanel.SetActive(true);
+    }
+    public void PausePanelPlayBtn()
+    {
+        pausePanel.SetActive(false);
+        Time.timeScale = 1;
     }
    
 }
