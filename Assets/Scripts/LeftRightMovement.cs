@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class LeftRightMovement : MonoBehaviour
@@ -9,12 +8,6 @@ public class LeftRightMovement : MonoBehaviour
 
     private bool isArrivedRightBorder=false;
     private bool isArrivedLeftBorder=true;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (GameManager.gameStarted == true && GameManager.gameOver == false)

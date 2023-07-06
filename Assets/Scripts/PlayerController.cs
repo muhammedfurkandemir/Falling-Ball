@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -23,11 +22,11 @@ public class PlayerController : MonoBehaviour
             {
                 touchXDelta = Input.GetTouch(0).deltaPosition.x;
             }
-            //if (Input.GetMouseButton(0))
-            //{
-            //    touchXDelta = Input.GetAxis("Mouse X");
-            //    //touchXDelta = Input.GetTouch(0).deltaPosition.x / Screen.width;
-            //}
+            if (Input.GetMouseButton(0))
+            {
+                touchXDelta = Input.GetAxis("Mouse X");
+                //touchXDelta = Input.GetTouch(0).deltaPosition.x / Screen.width;
+            }
             newX = transform.position.x + xSpeed * touchXDelta * Time.deltaTime;
             newX = Mathf.Clamp(newX, -limitx, limitx);
 

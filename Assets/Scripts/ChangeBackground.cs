@@ -1,34 +1,52 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class ChangeBackground : MonoBehaviour
 {
-    public Color32[] backgroundColors;
-    public float changingTime;
     public Camera _cam;
-    int index = 0;
-    float timer;
+    public Color[] colors;
+    private int currentColorIndex = 0;
+    private int targetColorIndex = 1;
+    private float targetPoint;
+    private float timer;
+    private bool change;
+    public float time;
+    public float changeColorTime;
+    
     void Start()
     {
-         _cam = this.GetComponent<Camera>();   
+         _cam = this.GetComponent<Camera>();
+        
     }
 
-
-    void Update()
+    void Transitition()
     {
         if (GameManager.gameStarted == true && GameManager.gameOver == false)
         {
-            _cam.backgroundColor = Color.Lerp(_cam.backgroundColor, backgroundColors[index], 3f);
-            timer += Time.deltaTime;
-            if (timer > changingTime)
+            timer += Time.deltaTime;            
+            if (timer>=changeColorTime)
             {
-                index++;
-                if (backgroundColors.Length - 1 == index)
-                    index = 0;
+                change = !change;
                 timer = 0;
             }
+            if (change)
+            {
+                targetPoint += Time.deltaTime / time;
+                _cam.backgroundColor = Color.Lerp(colors[currentColorIndex], colors[targetColorIndex], targetPoint);
+            }            
+            if (targetPoint>=1)
+            {
+                targetPoint = 0;
+                currentColorIndex = targetColorIndex;
+                targetColorIndex++;
+                if (targetColorIndex == colors.Length)
+                    targetColorIndex = 0;
+            }
         }
-        
+    }
+    void Update()
+    {
+
+        Transitition();
     }
 }

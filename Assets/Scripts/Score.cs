@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,12 +18,6 @@ public class Score : MonoBehaviour
         highScore = PlayerPrefs.GetInt("highScore");
         panelScoreText.text = "Score: " + score.ToString();
         panelHighScoreText.text = "Best: " + highScore.ToString();
-    }
-
-    
-    void Update()
-    {
-        
     }
 
     public void Scored()

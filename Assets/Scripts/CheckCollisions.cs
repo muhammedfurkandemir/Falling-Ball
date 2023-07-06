@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CheckCollisions : MonoBehaviour
@@ -18,7 +17,6 @@ public class CheckCollisions : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -31,7 +29,6 @@ public class CheckCollisions : MonoBehaviour
             {
                 _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, _rigidbody.velocity.y + bounceSize, _rigidbody.velocity.z);
                 _rigidbody.AddTorque(new Vector3(0, bounceSize, 0));
-                StartCoroutine(DownVelocityTimer());
                 bounceSound.Play();
                 if (bounceCount == 0)
                     score.Scored();
@@ -67,7 +64,8 @@ public class CheckCollisions : MonoBehaviour
     IEnumerator DownVelocityTimer()
     {
         yield return new WaitForSeconds(0.5f);
-        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, _rigidbody.velocity.y + -bounceDownVelocitySize, _rigidbody.velocity.z);
+        if (!_rigidbody.isKinematic)
+            _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, _rigidbody.velocity.y + -bounceDownVelocitySize, _rigidbody.velocity.z);
         StopCoroutine(DownVelocityTimer());
     }
 }

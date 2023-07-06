@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,7 +12,9 @@ public class GameManager : MonoBehaviour
     public GameObject score;
     public GameObject startGround;
     public GameObject pausePanel;
-  
+    public GameObject pauseBtn;
+
+    public AudioSource btnSound;
 
     public Rigidbody _rigidbody;
     void Start()
@@ -22,7 +23,6 @@ public class GameManager : MonoBehaviour
         gameOver = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         score.SetActive(false);
         gameOverPanel.SetActive(true);
         gameStarted = false;
-
+        pauseBtn.SetActive(false);
     }
     public void GameHasStarted()
     {
@@ -49,21 +49,29 @@ public class GameManager : MonoBehaviour
         _rigidbody.useGravity = true;
         gameStartImage.SetActive(false);
         startGround.SetActive(true);
+        pauseBtn.SetActive(true);
     }
     
     public void RestartBtn()
     {
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        btnSound.Play();
     }
     public void PauseBtn()
     {
         Time.timeScale = 0;
         pausePanel.SetActive(true);
+        btnSound.Play();
+        pauseBtn.SetActive(false);
     }
     public void PausePanelPlayBtn()
     {
         pausePanel.SetActive(false);
         Time.timeScale = 1;
+        btnSound.Play();
+        pauseBtn.SetActive(true);
     }
+    
    
 }
