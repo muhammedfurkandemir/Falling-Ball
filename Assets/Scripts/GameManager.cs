@@ -27,14 +27,16 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0)||Input.touchCount>0&&gameOver==false)
+        if (Input.GetMouseButtonDown(0)||Input.touchCount>0)
         {
+            if(gameOver==false)
             GameHasStarted();
         }
         
     }
     public void GameOver()
     {
+        
         gameOver = true;
         gameStarted = true;
         pauseBtn.SetActive(false);
@@ -52,11 +54,11 @@ public class GameManager : MonoBehaviour
         gameStartImage.SetActive(false);
         startGround.SetActive(true);
         pauseBtn.SetActive(true);
+        gameOver = false;
     }
     
     public void RestartBtn()
     {
-        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         btnSound.Play();
     }
