@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
 
             Vector3 newPosition = new Vector3(newX, transform.position.y, transform.position.z);
+            //Vector3 newPosition = Vector3.Lerp(transform.position,new Vector3(newX, transform.position.y, transform.position.z),xSpeed*Time.deltaTime);
             transform.position = newPosition;
         }
         

@@ -1,4 +1,5 @@
 
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,9 @@ public class Score : MonoBehaviour
     public Text panelScoreText;
     public Text panelHighScoreText;
     public GameObject New;
+
+
+    
     void Start()
     {
         score = 0;
@@ -17,15 +21,26 @@ public class Score : MonoBehaviour
         scoreText.text = score.ToString();
         highScore = PlayerPrefs.GetInt("highScore");
         panelScoreText.text = "Score: " + score.ToString();
-        panelHighScoreText.text = "Best: " + highScore.ToString();
+        panelHighScoreText.text = "Best: " + highScore.ToString();        
     }
 
     public void Scored()
     {
-        score++;
+        score++;        
         scoreText.text = score.ToString();
         panelScoreText.text = "Score: " + score.ToString();
-        if (score>highScore)
+        CheckHighScore();
+    }
+    public void AddScored(int addedScore)
+    {
+        score += addedScore;
+        scoreText.text = score.ToString();
+        panelScoreText.text = "Score: " + score.ToString();
+        CheckHighScore();
+    }
+    void CheckHighScore()
+    {
+        if (score > highScore)
         {
             highScore = score;
             PlayerPrefs.SetInt("highScore", highScore);

@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject startGround;
     public GameObject pausePanel;
     public GameObject pauseBtn;
+    public GameObject addScore;
 
     public AudioSource btnSound;
 
@@ -26,7 +27,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0)||Input.touchCount>0)
+        if (Input.GetMouseButtonDown(0)||Input.touchCount>0&&gameOver==false)
         {
             GameHasStarted();
         }
@@ -36,12 +37,13 @@ public class GameManager : MonoBehaviour
     {
         gameOver = true;
         gameStarted = true;
+        pauseBtn.SetActive(false);
+        addScore.SetActive(false);
         _rigidbody.useGravity = false;
         _rigidbody.isKinematic = true;
         score.SetActive(false);
         gameOverPanel.SetActive(true);
         gameStarted = false;
-        pauseBtn.SetActive(false);
     }
     public void GameHasStarted()
     {
