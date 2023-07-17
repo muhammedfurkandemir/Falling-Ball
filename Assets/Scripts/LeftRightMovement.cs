@@ -36,4 +36,5 @@ public class LeftRightMovement : MonoBehaviour
             isArrivedRightBorder = false;
         }
     }
+    
 }

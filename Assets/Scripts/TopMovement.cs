@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class TopMovement : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class TopMovement : MonoBehaviour
     void Update()
     {
         if(GameManager.gameOver == false && GameManager.gameStarted == true)
-        transform.Translate(Vector3.up * Time.deltaTime * moveSpeed); 
+        transform.Translate(Vector3.up * Time.deltaTime * moveSpeed);
+        
     }
     IEnumerator GameObjectDeactive()
     {
@@ -24,6 +26,7 @@ public class TopMovement : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-  
+    
+
 
 }

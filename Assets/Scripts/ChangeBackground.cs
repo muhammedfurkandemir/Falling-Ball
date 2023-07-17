@@ -9,7 +9,7 @@ public class ChangeBackground : MonoBehaviour
     private int targetColorIndex = 1;
     private float targetPoint;
     private float timer;
-    private bool change;
+    private bool change =false;
     public float time;
     public float changeColorTime;
     
